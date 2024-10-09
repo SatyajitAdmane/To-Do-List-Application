@@ -1,0 +1,87 @@
+/* General styling for the table */
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead.thead-light th {
+    background-color: #f8f9fa; /* Light gray */
+    font-weight: bold;
+  }
+  
+  table.table-bordered {
+    border: 1px solid #dee2e6; /* Light gray border for the table */
+  }
+  
+  table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9; /* Light stripe background for rows */
+  }
+  
+  /* Padding and spacing */
+  .table th, .table td {
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Task Action dropdown styling */
+  .dropdown-menu {
+    min-width: 6rem;
+  }
+  
+  .dropdown-item {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  /* Search bar styling */
+  input[type="text"].form-control {
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  /* Task status badges or color text */
+  td a {
+    color: #007bff; /* Link color */
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  td a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Pagination controls */
+  .pagination {
+    margin-bottom: 0;
+  }
+  
+  .page-link {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+  }
+  
+  .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #f8f9fa;
+  }
+  
+  .page-item.active .page-link {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* New Task and Refresh buttons */
+  .btn-warning {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  
+  .btn-light {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+  }
+  

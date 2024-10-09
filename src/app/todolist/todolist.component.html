@@ -1,0 +1,78 @@
+<div class="container mt-4">
+    <!-- Header with "New Task" and "Refresh" buttons -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4>Tasks</h4>
+      <div>
+        <button class="btn btn-warning" (click)="addNewTask()">New Task</button>
+        <button class="btn btn-light" (click)="refreshTasks()">Refresh</button>
+      </div>
+    </div>
+  
+    <!-- Task count and search bar -->
+    <div class="d-flex justify-content-between mb-3">
+      <span>{{ tasks.length }} records</span>
+      <input type="text" class="form-control w-25" placeholder="Search" [(ngModel)]="searchTerm">
+    </div>
+  
+    <!-- Tasks table -->
+    <table class="table table-striped table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th><input type="checkbox"></th>
+          <th>Assigned To</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Comments</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasksToShow(); let i = index"> <!-- Get the index -->
+          <td><input type="checkbox"></td>
+          <td><a>{{ task.assignedTo }}</a></td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.dueDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.comments }}</td>
+          <td>
+            <div class="dropdown">
+              <button
+                class="btn btn-light dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Action
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <button class="dropdown-item" (click)="editTask(task)">Edit</button> <!-- Pass index -->
+                </li>
+                <li>
+                  <button class="dropdown-item" (click)="deleteTask(task)">Delete</button>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+  
+    <!-- Pagination controls -->
+    <div class="d-flex justify-content-between">
+      <span>Showing {{ (page - 1) * itemsPerPage + 1 }} to {{ (page - 1) * itemsPerPage + tasksToShow().length }} of {{ tasks.length }} entries</span>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="page === 1">
+            <a class="page-link" (click)="prevPage()">Prev</a>
+          </li>
+          <li class="page-item" [class.disabled]="page === totalPages()">
+            <a class="page-link" (click)="nextPage()">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
